@@ -11,18 +11,17 @@ export function About() {
           </h2>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-ink-soft">
             <p>
-              I came to data analysis through statistics. My Higher National Diploma in Statistics at the Federal Polytechnic, Ilaro,
-              earned a Distinction, and my research applied quality-control charts to track confirmed Monkeypox cases across
-              Nigerian states.
+              I ventured into data analysis through my background in statistics. I earned a Distinction in my Higher National
+              Diploma in Statistics from the Federal Polytechnic, Ilaro. For my research, I used quality-control charts to track
+              confirmed Monkeypox cases across Nigerian states.
             </p>
             <p>
-              Since then I have worked with transaction data for digital payments, sales data for retail and gaming, and campaign
-              data for marketing. Most of that work lives in Excel and Power BI, with SQL for querying and R or Python when the
-              analysis needs more.
+              Since then, I have worked with digital payment transactions, retail and gaming sales, and marketing campaign data. I
+              do most of my work in Excel and Power BI, using SQL to query databases and R or Python for advanced analysis.
             </p>
             <p>
-              The part I care about most is the step where a messy table becomes a clear answer: which states drive revenue, where
-              transactions fail, which channel actually converts.
+              What I enjoy most is turning raw, messy data into clear insights—like showing which states drive revenue, where
+              payment transactions fail, or which marketing channel converts best.
             </p>
           </div>
         </div>
