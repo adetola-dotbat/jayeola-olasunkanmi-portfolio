@@ -1,7 +1,6 @@
 import { profile } from "@/content/profile";
 import { isContactFormEnabled } from "@/lib/contact";
-import { ExternalLink } from "@/components/ui/primitives";
-import { Download, Folder, Mail, Phone } from "@/components/ui/icons";
+import { Download, Mail, Phone } from "@/components/ui/icons";
 import { ContactForm } from "./contact-form";
 import { CopyEmail } from "./copy-email";
 
@@ -20,8 +19,8 @@ export function Contact() {
             Have a role, a project, a dataset or a question? Send a message and I&apos;ll reply by email.
           </p>
 
-          <ul className={formEnabled ? "mt-10 grid grid-cols-1 gap-3" : "mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-3 text-left sm:grid-cols-3"}>
-            <li className={`flex items-center justify-between gap-3 rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 ${formEnabled ? "" : "sm:col-span-3"}`}>
+          <ul className={formEnabled ? "mt-10 grid grid-cols-1 gap-3" : "mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-3 text-left sm:grid-cols-2"}>
+            <li className={`flex items-center justify-between gap-3 rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 ${formEnabled ? "" : "sm:col-span-2"}`}>
               <a href={`mailto:${profile.email}`} className="flex min-w-0 items-center gap-3 hover:text-[#f0b48f]">
                 <Mail className="size-4 shrink-0 text-white/60" />
                 <span className="truncate">{profile.email}</span>
@@ -36,15 +35,6 @@ export function Contact() {
                 <Phone className="size-4 shrink-0 text-white/60" />
                 {profile.phone}
               </a>
-            </li>
-            <li>
-              <ExternalLink
-                href={profile.driveFolder}
-                className="flex w-full items-center gap-3 rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 hover:text-[#f0b48f]"
-              >
-                <Folder className="size-4 shrink-0 text-white/60" />
-                <span className="flex-1">Portfolio files</span>
-              </ExternalLink>
             </li>
             <li>
               <a

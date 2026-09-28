@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { profile } from "@/content/profile";
-import { ExternalLink } from "@/components/ui/primitives";
 import { ArrowUp } from "@/components/ui/icons";
 
 export function Footer() {
@@ -29,11 +28,6 @@ export function Footer() {
               <a className="hover:text-ink" href={`mailto:${profile.email}`}>
                 Email
               </a>
-            </li>
-            <li>
-              <ExternalLink className="hover:text-ink" href={profile.driveFolder}>
-                Portfolio files
-              </ExternalLink>
             </li>
             <li>
               <a href="#top" className="inline-flex items-center gap-1 hover:text-ink">

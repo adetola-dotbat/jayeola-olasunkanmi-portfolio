@@ -74,7 +74,6 @@ const jsonLd = {
         { "@type": "CollegeOrUniversity", name: "Federal Polytechnic, Ilaro" },
         { "@type": "CollegeOrUniversity", name: "Lagos State Polytechnic" },
       ],
-      sameAs: [profile.driveFolder],
     },
     {
       "@type": "WebSite",

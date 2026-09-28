@@ -8,8 +8,6 @@ export const profile = {
   phone: "+234 901 310 1081",
   phoneHref: "tel:+2349013101081",
   cv: "/documents/Jayeola-Olasunkanmi-Idyat-CV.pdf",
-  driveFolder:
-    "https://drive.google.com/drive/folders/1j73BER41EmvsRV5f0jEFstr2f2mjAHaY",
   portrait: {
     src: "/images/jayeola-profile.jpg",
     width: 788,
