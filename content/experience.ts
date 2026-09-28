@@ -6,7 +6,7 @@ export const experience: ExperienceItem[] = [
     organization: "Digital Payment & FinTech Analytics Services",
     kind: "Contract",
     start: "May 2024",
-    end: "Present",
+    end: "Aug 2025",
     location: "Lagos",
     summary:
       "Transaction analytics for digital payments, covering processing health, revenue drivers and executive reporting.",
