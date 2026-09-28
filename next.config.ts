@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // A stray lockfile in a parent folder would otherwise be picked as the workspace root.
+  turbopack: { root: __dirname },
 };
 
 export default nextConfig;

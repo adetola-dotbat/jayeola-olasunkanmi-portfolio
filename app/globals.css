@@ -1,26 +1,206 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/*
+ * Design tokens
+ * Warm paper neutrals, a deep teal "analyst" primary and a terracotta accent
+ * drawn from the portrait. The accent is reserved for emphasis and data highlights.
+ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --color-paper: #f6f4ef;
+  --color-surface: #ffffff;
+  --color-sunken: #efece5;
+  --color-ink: #15171c;
+  --color-ink-soft: #383d48;
+  --color-muted: #5f6674;
+  --color-line: #e3dfd6;
+  --color-line-strong: #cbc5b8;
+
+  --color-brand: #0e5a52;
+  --color-brand-strong: #0a453f;
+  --color-brand-soft: #e2eeeb;
+  --color-accent: #b0491a;
+  --color-accent-soft: #f7e7dc;
+
+  --color-success: #1f7a4d;
+  --color-success-soft: #e3f2ea;
+  --color-danger: #b42318;
+  --color-danger-soft: #fbe9e7;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+
+  --shadow-soft: 0 1px 2px rgb(21 23 28 / 0.04), 0 4px 16px -8px rgb(21 23 28 / 0.08);
+  --shadow-lift: 0 2px 4px rgb(21 23 28 / 0.04), 0 18px 40px -20px rgb(21 23 28 / 0.22);
+
+  --container-content: 72rem;
+  --container-prose: 42rem;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Anchor targets clear the sticky header. */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: var(--container-content);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .serif-accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Subtle dot grid used behind data motifs. */
+  .dot-grid {
+    background-image: radial-gradient(rgb(21 23 28 / 0.09) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+}
+
+/*
+ * Motion. Scroll reveals use scroll-driven animations as progressive
+ * enhancement: unsupported browsers and reduced-motion users see static content.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+
+    .bar-grow {
+      transform-origin: left center;
+      animation: bar-grow linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 35%;
+    }
+  }
+
+  .hero-enter {
+    animation: hero-enter 0.9s var(--ease-out-soft) both;
+  }
+  .hero-enter-delay {
+    animation: hero-enter 0.9s 0.12s var(--ease-out-soft) both;
+  }
+  .hero-enter-delay-2 {
+    animation: hero-enter 0.9s 0.24s var(--ease-out-soft) both;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+dialog::backdrop {
+  background: rgb(15 17 21 / 0.82);
 }
